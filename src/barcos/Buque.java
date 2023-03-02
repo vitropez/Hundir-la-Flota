@@ -16,7 +16,13 @@ public Buque(int posicionInicial, int posicionFinal, char horientacion) {
 	this.tamano = 4;
 
 	
-	}	
+	}
+public char getNombre() {
+	return nombre;
+}
+public void setNombre(char nombre) {
+	this.nombre = nombre;
+}
 public int getPosicionInicial() {
 	return posicionInicial;
 }
@@ -40,19 +46,8 @@ public int getTamano() {
 }
 public void setTamano(int tamano) {
 	this.tamano = tamano;
-}
+}	
 
-public char getNombre() {
-	return nombre;
-}
-public void setNombre(char nombre) {
-	this.nombre = nombre;
-}
-@Override
-public String toString() {
-	return "Portaviones [posicionInicial=" + posicionInicial + ", posicionFinal=" + posicionFinal + ", horientacion="
-			+ horientacion + ", tamano=" + tamano + "]";
-}
 
 }	
 	

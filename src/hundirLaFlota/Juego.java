@@ -164,9 +164,9 @@ public class Juego {
 				case 'p': {
 					System.out.println("tocado!!");
 					tableroMaquina[disparox][disparoy] = 't';
-					int size = porta.getTamano();
-					porta.setTamano(size - 1);
-					if (porta.getTamano() == 0) {
+					int size = portaMaquina.getTamano();
+					portaMaquina.setTamano(size - 1);
+					if (portaMaquina.getTamano() == 0) {
 						System.out.println("hundido");
 					}
 
@@ -175,9 +175,9 @@ public class Juego {
 				case 'b': {
 					System.out.println("tocado!!");
 					tableroMaquina[disparox][disparoy] = 't';
-					int size = buq.getTamano();
-					buq.setTamano(size - 1);
-					if (buq.getTamano() == 0) {
+					int size = buqMaquina.getTamano();
+					buqMaquina.setTamano(size - 1);
+					if (buqMaquina.getTamano() == 0) {
 						System.out.println("hundido");
 					}
 
@@ -186,9 +186,9 @@ public class Juego {
 				case 's': {
 					System.out.println("tocado!!");
 					tableroMaquina[disparox][disparoy] = 't';
-					int size = sub.getTamano();
-					sub.setTamano(size - 1);
-					if (sub.getTamano() == 0) {
+					int size = subMaquina.getTamano();
+					subMaquina.setTamano(size - 1);
+					if (subMaquina.getTamano() == 0) {
 						System.out.println("hundido");
 					}
 
@@ -197,9 +197,9 @@ public class Juego {
 				case 'c': {
 					System.out.println("tocado!!");
 					tableroMaquina[disparox][disparoy] = 't';
-					int size = cru.getTamano();
-					cru.setTamano(size - 1);
-					if (cru.getTamano() == 0) {
+					int size = cruMaquina.getTamano();
+					cruMaquina.setTamano(size - 1);
+					if (cruMaquina.getTamano() == 0) {
 						System.out.println("hundido");
 					}
 
@@ -208,9 +208,9 @@ public class Juego {
 				case 'l': {
 					System.out.println("tocado!!");
 					tableroMaquina[disparox][disparoy] = 't';
-					int size = lan.getTamano();
-					lan.setTamano(size - 1);
-					if (lan.getTamano() == 0) {
+					int size = lanMaquina.getTamano();
+					lanMaquina.setTamano(size - 1);
+					if (lanMaquina.getTamano() == 0) {
 						System.out.println("hundido");
 					}
 
@@ -473,6 +473,7 @@ public class Juego {
 
 				}
 			}
+			
 //aqui se hace el cambio del jugador 
 			if (jugador == 1) {
 				jugador = 0;
@@ -480,10 +481,10 @@ public class Juego {
 				jugador = 1;
 			}
 		}
-		while((porta.getTamano() > 0 && buq.getTamano() >0 && sub.getTamano() > 0 && cru.getTamano() > 0
-				&& lan.getTamano() > 0)
-				|| (portaMaquina.getTamano() > 0 && buqMaquina.getTamano() > 0 && subMaquina.getTamano() > 0
-						&& cruMaquina.getTamano() > 0 && lanMaquina.getTamano() > 0));
+		while(((porta.getTamano() > 0 )|| (buq.getTamano() >0) || (sub.getTamano() > 0) || (cru.getTamano() > 0)
+				|| (lan.getTamano() > 0))
+				&&((portaMaquina.getTamano() > 0) || (buqMaquina.getTamano() > 0) || (subMaquina.getTamano() > 0)
+						|| (cruMaquina.getTamano() > 0 )||( lanMaquina.getTamano() > 0)));
 //aqui termina el juego y se imprimen de nuevo los tableroa para ver el resultado		
 		System.out.println("juego terminado");
 		System.out.println("*************************jugador******************");
