@@ -18,7 +18,10 @@ public class Juego {
 	static char tiro;
 	static int jugador = 1;
 	static boolean tamanoCorrecto;
-	static boolean noCambioBarco=false;
+	
+	
+	
+	
 	
 	
 
@@ -124,33 +127,17 @@ public class Juego {
 		comprobarPosicionMaquina(lanMaquina);
 
 		System.out.println("*******************jugador****************");
-		// aqui se mandan pintar los barcos del jugador y si es posible colocarlos
-		// adecuadamen
-		for (int i = 0; i < 8; i++) {
-
-			for (int j = 0; j < 8; j++) {
-
-				System.out.print(tablero[i][j]);
-			}
-			System.out.print("\n");
-		}
+		imprimirTablero();
 
 		System.out.println("\n\n\n\n*******************maquina****************");
 //aqui se mandan pintar los barcos de la maquina y si es posible colocarlos adecuadamente
 		
-		for (int i = 0; i < 8; i++) {
-
-			for (int j = 0; j < 8; j++) {
-
-				System.out.print(tableroMaquina[i][j]);
-			}
-			System.out.print("\n");
-		}
+		imprimirTableroMaquina();
 
 		do {  
 //aqui empieza el turno del jugador y el resultado de los disparos	el resultado se hace sobre el tablero
 //	de la maquina			
-
+			imprimirTablero();
 			jugador = 1;
 			if (jugador == 1) {
 				System.out.println("jugador dispara!!");
@@ -256,28 +243,22 @@ public class Juego {
 					char barcoElegido = cambioPosicionBarco.next().charAt(0);
 				switch (barcoElegido) {
 					case 'p': {
+						int numeroVeces=0;
+					}
 						if (porta.getTamano() < 5) {
 							System.out.println("no se puede cambiar el barco");
 							break;
 
 						} else {
-
-							Scanner cambioPosicionBarcoPorta = new Scanner(System.in);
-							System.out.println("introduce nueva posicion del barco ");
-							int nuevax = situar.nextInt();
-							int nuevay = situar.nextInt();
-							System.out.println("introduce la posicion, 'v', 'h'");
-							char nuevaPosicion = cambioPosicionBarcoPorta.next().charAt(0);
-							porta.setPosicionInicial(nuevax);
-							porta.setPosicionFinal(nuevay);
-							porta.setHorientacion(nuevaPosicion);
-							comprobarPosicion(porta);
-							if (noCambioBarco==false) {
-
-								System.out.println("no se puede cambiar el barco");
-							}
+							int eliminarPosicionx=porta.getPosicionInicial();
+							int eliminarPosiciony=porta.getPosicionFinal();
+							
+							comprobarPosicion( porta);
+							tablero[eliminarPosicionx][eliminarPosiciony]='.';
+							System.out.println("\n\n***********barco Movido********");
+							imprimirTablero();
 						}
-					}
+					
 
 						break;
 
@@ -287,21 +268,12 @@ public class Juego {
 							break;
 
 						} else {
-
-						Scanner cambioPosicionBarcoBuq = new Scanner(System.in);
-						System.out.println("introduce nueva posicion del barco ");
-						int nuevaxBuq = situar.nextInt();
-						int nuevayBuq = situar.nextInt();
-						System.out.println("introduce la posicion, 'v', 'h'");
-						char nuevaPosicionBuq = cambioPosicionBarcoBuq.next().charAt(0);
-						buq.setPosicionInicial(nuevaxBuq);
-						buq.setPosicionFinal(nuevayBuq);
-						buq.setHorientacion(nuevaPosicionBuq);
-						comprobarPosicion(buq);
-
-						if (noCambioBarco==false) 
-
-							System.out.println("no se puede cambiar el barco");
+							int eliminarPosicionx=buq.getPosicionInicial();
+							int eliminarPosiciony=buq.getPosicionFinal();
+							comprobarPosicion( buq);
+							tablero[eliminarPosicionx][eliminarPosiciony]='.';
+							System.out.println("\n\n***********barco Movido********/n/n");
+							imprimirTablero();
 					}
 					}
 						break;
@@ -312,20 +284,13 @@ public class Juego {
 							break;
 
 						} else {
-
-						Scanner cambioPosicionBarcoCru = new Scanner(System.in);
-						System.out.println("introduce nueva posicion del barco ");
-						int nuevaxCru = situar.nextInt();
-						int nuevayCru = situar.nextInt();
-						System.out.println("introduce la posicion, 'v', 'h'");
-						char nuevaPosicionCru = cambioPosicionBarcoCru.next().charAt(0);
-						cru.setPosicionInicial(nuevaxCru);
-						cru.setPosicionFinal(nuevayCru);
-						cru.setHorientacion(nuevaPosicionCru);
-						comprobarPosicion(cru);
-						if (noCambioBarco==false) 
-
-							System.out.println("no se puede cambiar el barco");
+							int eliminarPosicionx=cru.getPosicionInicial();
+							int eliminarPosiciony=cru.getPosicionFinal();
+							comprobarPosicion( cru);
+							tablero[eliminarPosicionx][eliminarPosiciony]='.';
+							System.out.println("\n\n***********barco Movido********");
+							imprimirTablero();
+					
 					}
 					}
 						break;
@@ -336,20 +301,12 @@ public class Juego {
 							break;
 
 						} else {
-						Scanner cambioPosicionBarcoSub = new Scanner(System.in);
-						System.out.println("introduce nueva posicion del barco ");
-						int nuevaxSub = situar.nextInt();
-						int nuevaySub = situar.nextInt();
-						System.out.println("introduce la posicion, 'v', 'h'");
-						char nuevaPosicionSub = cambioPosicionBarcoSub.next().charAt(0);
-						sub.setPosicionInicial(nuevaxSub);
-						sub.setPosicionFinal(nuevaySub);
-						sub.setHorientacion(nuevaPosicionSub);
-
-						comprobarPosicion(sub);
-						if (noCambioBarco==false) 
-
-							System.out.println("no se puede cambiar el barco");
+							int eliminarPosicionx=sub.getPosicionInicial();
+							int eliminarPosiciony=sub.getPosicionFinal();
+							comprobarPosicion( sub);
+							tablero[eliminarPosicionx][eliminarPosiciony]='.';
+							System.out.println("\n\n***********barco Movido********");
+							imprimirTablero();
 						}
 					}
 						break;
@@ -360,21 +317,12 @@ public class Juego {
 							break;
 
 						} else {
-
-						Scanner cambioPosicionBarcoLan = new Scanner(System.in);
-						System.out.println("introduce nueva posicion del barco ");
-						int nuevaxLan = situar.nextInt();
-						int nuevayLan = situar.nextInt();
-						System.out.println("introduce la posicion, 'v', 'h'");
-						char nuevaPosicionLan = cambioPosicionBarcoLan.next().charAt(0);
-						lan.setPosicionInicial(nuevaxLan);
-						lan.setPosicionFinal(nuevayLan);
-						lan.setHorientacion(nuevaPosicionLan);
-
-						comprobarPosicion(lan);
-						if (noCambioBarco==false)
-
-							System.out.println("no se puede cambiar el barco");
+							int eliminarPosicionx=lan.getPosicionInicial();
+							int eliminarPosiciony=lan.getPosicionFinal();
+							comprobarPosicion( lan);
+							tablero[eliminarPosicionx][eliminarPosiciony]='.';
+							System.out.println("\n\n***********barco Movido********");
+							imprimirTablero();
 						}
 					}
 						break;
@@ -382,7 +330,7 @@ public class Juego {
 					}
 				}
 
-				}
+			}
 
 				jugador = 0;
 			}
@@ -488,6 +436,15 @@ public class Juego {
 //aqui termina el juego y se imprimen de nuevo los tableroa para ver el resultado		
 		System.out.println("juego terminado");
 		System.out.println("*************************jugador******************");
+		imprimirTablero();
+
+		System.out.println("*************************maquina******************");
+
+		imprimirTableroMaquina();
+
+	}
+
+	private static void imprimirTablero() {
 		for (int i = 0; i < 8; i++) {
 
 			for (int j = 0; j < 8; j++) {
@@ -496,9 +453,9 @@ public class Juego {
 			}
 			System.out.print("\n");
 		}
+	}
 
-		System.out.println("*************************maquina******************");
-
+	private static void imprimirTableroMaquina() {
 		for (int i = 0; i < 8; i++) {
 
 			for (int j = 0; j < 8; j++) {
@@ -507,7 +464,6 @@ public class Juego {
 			}
 			System.out.print("\n");
 		}
-
 	}
 
 	public static char[][] comprobarPosicion(Barco port) {
@@ -523,6 +479,7 @@ public class Juego {
 		 String caracterAnteriorR="";
 		 String caracterPosteriorR="";
 		 char name = port.getNombre();
+		
 			
 		
 		// este while comprueba que para colocar los barcos estos no pueden sobrepasar
@@ -601,7 +558,7 @@ public class Juego {
 					&& !caracterAnterior.contains("s") && !caracterAnterior.contains("l")&& !caracterPosteriorR.contains("p") && !caracterPosteriorR.contains("b")
 					&& !caracterPosteriorR.contains("c") && !caracterPosteriorR.contains("s") && !caracterPosteriorR.contains("l")
 					&& !caracterAnteriorR.contains("p") && !caracterAnteriorR.contains("b") && !caracterAnteriorR.contains("c")
-					&& !caracterAnteriorR.contains("s") && !caracterAnteriorR.contains("l")&&!anadirCaracter.contains("a"))
+					&& !caracterAnteriorR.contains("s") && !caracterAnteriorR.contains("l")&&!anadirCaracter.contains("a")&&!anadirCaracterR.contains("a"))
 	 {
 				switch (port.getHorientacion()) {
 
@@ -623,7 +580,8 @@ public class Juego {
 				}
 				break;	
 
-				}noCambioBarco=true;
+				}
+				 imprimirTablero();
 				
 				}else {
 					Scanner nova = new Scanner(System.in);
@@ -636,7 +594,7 @@ public class Juego {
 					port.setPosicionFinal(nuevay);
 					port.setHorientacion(nuevaPosicion);
 					comprobarPosicion(port);
-					noCambioBarco=false;
+					
 				}
 				
 			return tablero;
@@ -772,35 +730,5 @@ public class Juego {
 
 	}
 
-//este metodo comprueba que la posicion del barco movido no sea a una casilla bombardeada anteriormente
-	public static boolean cambioPosicionNueva(Barco port) {
-
-		String anadirCaracter = "";
-
-		boolean verdadero;
-
-		if (port.getHorientacion() == 'h') {
-			for (int i = 0; i < port.getTamano(); i++) {
-
-				anadirCaracter += (tablero[port.getPosicionInicial() + i][port.getPosicionFinal()]);
-			}
-		}
-		if (port.getHorientacion() == 'v') {
-			for (int i = 0; i < port.getTamano(); i++) {
-
-				anadirCaracter += (tablero[port.getPosicionInicial()][port.getPosicionFinal() + i]);
-			}
-		}
-		if (!anadirCaracter.contains("a") && !anadirCaracter.contains("t")) {
-
-			verdadero = true;
-
-		} else {
-
-			verdadero = false;
-
-		}
-		return verdadero;
-	}
 
 }
